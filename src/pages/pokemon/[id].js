@@ -1,14 +1,16 @@
 import { PokemonCard } from "@poc/components/organisms/PokemonCard";
 import axios from "axios";
 
-export default function Posts({ forms, moves, sprites, types }) {
+export default function Posts({ forms, stats, sprites, types }) {
   return (
-    <PokemonCard
-      name={forms[0].name}
-      image={sprites.other.home.front_default}
-      types={types}
-      moves={moves}
-    />
+    <div className="w-full p-4 flex justify-center">
+      <PokemonCard
+        name={forms[0].name}
+        image={sprites.other.home.front_default}
+        types={types}
+        status={stats}
+      />
+    </div>
   );
 }
 

@@ -1,16 +1,18 @@
-import Image from "next/image";
+import { PokemonImage } from "@poc/components/molecules/PokemonImage";
+import { PokemonName } from "@poc/components/molecules/PokemonName";
+import { PokemonStatus } from "@poc/components/molecules/PokemonStatus";
+import { PokemonTypes } from "@poc/components/molecules/PokemonTypes";
+import { COLOR_TYPES } from "@poc/utils/colorTypes";
 
-export const PokemonCard = ({ name, image, types, moves }) => (
-  <div>
-    <h1>{name}</h1>
-    <Image src={image} width={100} height={100} />
-    <h2>type: </h2>
-    {types.map((pokemonType) => (
-      <p key={pokemonType.type.name}>{pokemonType.type.name}</p>
-    ))}
-    <h2>moves: </h2>
-    {moves.map((pokemonMove) => (
-      <p key={pokemonMove.move.name}>{pokemonMove.move.name}</p>
-    ))}
+export const PokemonCard = ({ name, image, types, status }) => (
+  <div className="w-[50rem] rounded-xl bg-white border border-black pb-4">
+    <div className={`h-48 ${COLOR_TYPES[types[0].type.name]} rounded-t-xl p-8`}>
+      <PokemonName name={name} />
+    </div>
+    <div className="-mt-[10rem] flex flex-col gap-8">
+      <PokemonImage image={image} />
+      <PokemonTypes types={types} />
+      <PokemonStatus status={status} />
+    </div>
   </div>
 );
